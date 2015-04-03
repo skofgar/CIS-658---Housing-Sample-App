@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  apartment_number: 
+  room_number: 
+  number_of_rooms: 
+  max_people: 
+  is_furnished: 
+
+two:
+  apartment_number: 
+  room_number: 
+  number_of_rooms: 
+  max_people: 
+  is_furnished: 
