@@ -1,0 +1,2 @@
+module ApartmentAssignmentsHelper
+end

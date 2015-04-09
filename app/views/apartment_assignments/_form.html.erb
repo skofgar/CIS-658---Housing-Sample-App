@@ -1,0 +1,25 @@
+<%= form_for(@apartment_assignment) do |f| %>
+  <% if @apartment_assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apartment_assignment.errors.count, "error") %> prohibited this apartment_assignment from being saved:</h2>
+
+      <ul>
+      <% @apartment_assignment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bedroom %><br>
+    <%= f.text_field :bedroom %>
+  </div>
+  <div class="field">
+    <%= f.label :assignment_date %><br>
+    <%= f.date_select :assignment_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

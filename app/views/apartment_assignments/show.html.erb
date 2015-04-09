@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bedroom:</strong>
+  <%= @apartment_assignment.bedroom %>
+</p>
+
+<p>
+  <strong>Assignment date:</strong>
+  <%= @apartment_assignment.assignment_date %>
+</p>
+
+<%= link_to 'Edit', edit_apartment_assignment_path(@apartment_assignment) %> |
+<%= link_to 'Back', apartment_assignments_path %>

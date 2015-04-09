@@ -1,36 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Apartments</h1>
+<h1>Available Apartments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Apartment number</th>
-      <th>Room number</th>
-      <th>Number of rooms</th>
-      <th>Max people</th>
-      <th>Is furnished</th>
-      <th>Thumbnail</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody class="uk-table">
-    <% @apartments.each do |apartment| %>
-      <tr>
-        <td><%= apartment.apartment_number %></td>
-        <td><%= apartment.room_number %></td>
-        <td><%= apartment.number_of_rooms %></td>
-        <td><%= apartment.max_people %></td>
-        <td><%= apartment.is_furnished %></td>
-        <td><%= apartment.thumbnail %></td>
-        <td><%= link_to 'Show', apartment %></td>
-        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="apartments">
+  <%= render @apartments %>
+</div>
+
 
 <br>
 

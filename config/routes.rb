@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :apartment_assignments
+
+  resources :users
+
   resources :apartments
 
   # The priority is based upon order of creation: first created -> highest priority.
