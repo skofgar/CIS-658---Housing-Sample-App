@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+
+<p>
+  <strong>Apartment:</strong>
+  <%= @apartment_assignment.apartment.apartment_number %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @apartment_assignment.user.fname + ' ' + @apartment_assignment.user.lname %>
+</p>
+
 <p>
   <strong>Bedroom:</strong>
   <%= @apartment_assignment.bedroom %>

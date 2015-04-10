@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :user_id %><br> <%= f.select :user_id,
+        options_for_select(User.all.collect {|u| ["#{u.lname}, #{u.fname}", u.id]}, selected: (@apartment_assignment.user ? @apartment_assignment.user.id : User.first.id)), {} %>
+  </div>
+  <div class="field">
+    <%= f.label :apartment_id %><br> <%= f.select :apartment_id,
+        options_for_select(Apartment.all.collect {|a| ["#{a.apartment_number}", a.id]}, selected: (@apartment_assignment.apartment ? @apartment_assignment.apartment.id : Apartment.first.id)), {} %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :bedroom %><br>
     <%= f.text_field :bedroom %>
   </div>

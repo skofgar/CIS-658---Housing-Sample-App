@@ -26,6 +26,13 @@ class ApartmentAssignmentsController < ApplicationController
   def create
     @apartment_assignment = ApartmentAssignment.new(apartment_assignment_params)
 
+    user = User.find(apartment_assignment_params[:user_id])
+    #@apartment_assignment.build_user(:id => user.id)
+
+    apartment = Apartment.find(apartment_assignment_params[:apartment_id])
+    #@apartment_assignment.build_apartment(:id => apartment.id)
+
+
     respond_to do |format|
       if @apartment_assignment.save
         format.html { redirect_to @apartment_assignment, notice: 'Apartment assignment was successfully created.' }
@@ -69,6 +76,6 @@ class ApartmentAssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_assignment_params
-      params.require(:apartment_assignment).permit(:bedroom, :assignment_date)
+      params.require(:apartment_assignment).permit(:bedroom, :assignment_date, :user_id, :apartment_id)
     end
 end

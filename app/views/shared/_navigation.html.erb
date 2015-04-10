@@ -10,9 +10,15 @@
 
     <ul class="uk-navbar-nav">
       <li class="uk-navbar-brand" href="">Housing</li>
-        <li class="uk-small"><a href="">Booking</a></li>
-        <li class="uk-small"><a href="/apartments">Manage</a></li>
+        <li class="uk-small"><a href="/apartments">Apartments</a></li>
         <li class="uk-small"><a href="/users">Users</a></li>
+        <li class="uk-small"><a href="/apartment_assignments">My assignments</a></li>
+        <li class="uk-small"><a href="/">Documentation</a></li>
+
+
+
+
+
 <!-- active -->
 
         <!--
@@ -35,33 +41,38 @@
         </li>
         -->
     </ul>
-<!--
+
     <div class="uk-navbar-flip">
+      <ul class="uk-navbar-nav">
+        <% if user_signed_in? %>
+          <!--<strong><%= current_user.email %></strong>-->
+          <li>
+            <%= link_to edit_user_registration_path :class => 'uk-small' do %>
+              <i class="uk-icon-user"></i> Edit profile
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path :class => 'uk-small' do %>
+              <i class="uk-icon-sign-out"></i> Logout
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+              <%= link_to new_user_registration_path :class => 'uk-small' do %>
+                <i class="uk-icon-pencil"></i> Sign Up
+              <% end %>
+          </li>
+          <li>
+              <%= link_to new_user_session_path :class => 'uk-small' do %>
+                <i class="uk-icon-sign-in"></i> Login
+              <% end %>
+          </li>
+        <% end %>
+      </ul>
 
-        <ul class="uk-navbar-nav">
-            <li class="uk-parent" data-uk-dropdown="">
-                <a href="">Parent</a>
 
-                <div class="uk-dropdown uk-dropdown-navbar">
-                    <ul class="uk-nav uk-nav-navbar">
-                        <li><a href="#">Item</a></li>
-                        <li><a href="#">Another item</a></li>
-                        <li class="uk-nav-header">Header</li>
-                        <li><a href="#">Item</a></li>
-                        <li><a href="#">Another item</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#">Separated item</a></li>
-                    </ul>
-                </div>
 
-            </li>
-            <li class="uk-hidden-small"><a href="">Item</a></li>
-            <li class="uk-active"><a href="">Active</a></li>
-        </ul>
 
     </div>
-
-    <div class="uk-navbar-content uk-navbar-center">Center</div>
--->
 </nav>
 <!-- -->

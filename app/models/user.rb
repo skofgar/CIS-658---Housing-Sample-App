@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
-  validates :fname, :lname, :email, :presence => true
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  validates :email, :presence => true
   validates :email, :uniqueness => true
   validates_format_of :email, :with => /.+@.+\..+/i
   #validate_on_create :apartments_within_bounds
 
-  has_many :appartment_assignments
-  has_many :apartments, through: :appartment_assignments
+  has_many :apartment_assignments
+  has_many :apartments, through: :apartment_assignments
 
   private
 

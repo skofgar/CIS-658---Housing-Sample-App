@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :apartment_assignments
 
   resources :users
 
   resources :apartments
+
+  root 'apartment_assignments#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
