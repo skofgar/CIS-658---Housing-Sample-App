@@ -11,7 +11,7 @@
     <ul class="uk-navbar-nav">
       <li class="uk-navbar-brand" href="">Housing</li>
         <li class="uk-small"><a href="/apartments">Apartments</a></li>
-        <li class="uk-small"><a href="/users">Users</a></li>
+        <!--<li class="uk-small"><a href="/users">Users</a></li>-->
         <li class="uk-small"><a href="/apartment_assignments">My assignments</a></li>
         <li class="uk-small"><a href="/">Documentation</a></li>
 
@@ -47,12 +47,13 @@
         <% if user_signed_in? %>
           <!--<strong><%= current_user.email %></strong>-->
           <li>
-            <%= link_to edit_user_registration_path :class => 'uk-small' do %>
-              <i class="uk-icon-user"></i> Edit profile
+            <%= link_to edit_user_registration_path, :class => 'uk-navbar-nav-subtitle' do %>
+                 <i class="uk-icon-user"></i> Edit profile
+                <div><%= current_user.firstname + ' ' + current_user.lastname %></div>
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path :class => 'uk-small' do %>
+            <%= link_to destroy_user_session_path, :method => :delete, :class => 'uk-small' do %>
               <i class="uk-icon-sign-out"></i> Logout
             <% end %>
           </li>
