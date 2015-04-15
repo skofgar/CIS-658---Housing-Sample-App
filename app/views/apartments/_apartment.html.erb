@@ -31,7 +31,14 @@
         </tbody>
     </table>
 
-   <!-- <button class="uk-button-success uk-button-large" type="button">Book</button> -->
+    <!--form_for [apartment, current_user]
+
+    look at: button_to api.rubyonrails.org-->
+
+    <!--<%= button_to "Create", new_apartment_assignment_path(apartment,current_user), form: { "data-type" => "json" } %>-->
+    <%= button_to 'Book', {:controller => "apartment_assignments", :action => "create", apartment_assignment: {:apartment => apartment, :current_user => current_user}}, :method=>:post %>
+
+
     <button class="uk-button-success uk-button-large" type="button"><%= link_to 'Edit', edit_apartment_path(apartment) %></button>
     <span>
      <!-- <%= link_to new_apartment_path, class: 'uk-button-success uk-button-large' do %>

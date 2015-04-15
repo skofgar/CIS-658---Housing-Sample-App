@@ -1,5 +1,6 @@
 class ApartmentAssignmentsController < ApplicationController
   before_action :set_apartment_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /apartment_assignments
   # GET /apartment_assignments.json

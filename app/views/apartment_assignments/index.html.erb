@@ -17,7 +17,7 @@
     <% @apartment_assignments.each do |apartment_assignment| %>
       <tr>
         <td><%= apartment_assignment.apartment.apartment_number %></td>
-        <td><%= apartment_assignment.user.fname + ' ' + apartment_assignment.user.lname %></td>
+        <td><%= apartment_assignment.user.firstname + ' ' + apartment_assignment.user.lastname %></td>
         <td><%= apartment_assignment.bedroom %></td>
         <td><%= apartment_assignment.assignment_date %></td>
         <td><%= link_to 'Show', apartment_assignment %></td>
@@ -31,3 +31,5 @@
 <br>
 
 <%= link_to 'New Apartment assignment', new_apartment_assignment_path %>
+
+<%= (current_user.firstname) %>
