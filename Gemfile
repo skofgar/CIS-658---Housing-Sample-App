@@ -28,7 +28,6 @@ gem 'apipie-rails'
 gem 'devise'
 
 # AJAX
-gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'responders'
 
