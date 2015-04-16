@@ -1,8 +1,15 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
+  resource_description do
+    short 'This resource contains information about the current apartments registered.'
+  end
+
+
   # GET /apartments
   # GET /apartments.json
+  api!
+
   def index
     #@apartments = Apartment.ApartmentAssignments.where({:users => current_user.id})  # Apartment.all
     #@apartments = Apartment.Users.merge(ApartmentAssignments.users)
@@ -27,6 +34,7 @@ class ApartmentsController < ApplicationController
 
   # POST /apartments
   # POST /apartments.json
+  api!
   def create
     @apartment = Apartment.new(apartment_params)
 
@@ -43,6 +51,7 @@ class ApartmentsController < ApplicationController
 
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
+  api!
   def update
     respond_to do |format|
       if @apartment.update(apartment_params)
@@ -57,6 +66,7 @@ class ApartmentsController < ApplicationController
 
   # DELETE /apartments/1
   # DELETE /apartments/1.json
+  api!
   def destroy
     @apartment.destroy
     respond_to do |format|
