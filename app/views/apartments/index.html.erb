@@ -4,16 +4,22 @@
   <h1 class="uk-float-left">Available Apartments</h1>
 
   <% if current_user.try(:admin?)  %>
-    <%= link_to 'New Apartment', new_apartment_path, { :class=>"uk-button uk-button-danger uk-float-right uk-margin" }  %>
+    <%= link_to 'New Apartment', new_apartment_path, { :class=>"uk-button uk-button-danger uk-float-right uk-margin", remote: true}  %>
   <% end %>
 </div>
 
+<div id="apartment-form" style="display:none;"></div>
+
+<hr class="uk-article-divider">
+
 <div id="apartments">
   <article class="uk-article ">
-    <ul class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+    <ul class="uk-grid" data-uk-grid-match="{row: false}" data-uk-grid-margin>
       <%= render @apartments %>
     </ul>
   </article>
 </div>
+
+
 
 

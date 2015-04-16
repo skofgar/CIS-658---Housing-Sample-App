@@ -3,7 +3,11 @@ class ApartmentAssignmentsController < ApplicationController
   before_action :authenticate_user!
 
   resource_description do
-    short 'This resource contains information about the current assignments of apartments to user. This resource provides confidential information.'
+    short 'Apartment assignments of apartments to users'
+    desc 'This resource contains information about the current assignments of apartments to user. This resource provides confidential information.'
+    #error 404, "Missing"
+    #error 500, "Server crashed for some <%= reason %>", :meta => {:anything => "you can think of"}
+    meta :apartment_assignments => {:id => '(d+)+', :bedroom => '(a-z)', :assignment_date => '...', :url => '...'}
   end
 
 
