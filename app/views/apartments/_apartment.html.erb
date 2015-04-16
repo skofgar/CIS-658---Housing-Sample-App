@@ -51,7 +51,7 @@
       <!--<%= button_to "Create", new_apartment_assignment_path(apartment,current_user), form: { "data-type" => "json" } %>-->
       <div class="uk-button-group uk-push-1-3">
 
-        <% if apartment.users.find_by_id(current_user) == current_user %>
+        <% if apartment.users.find_by_id(current_user) == current_user && nil != current_user %>
           <button class="uk-button" type="button" disabled>Booked</button>
         <% else %>
           <%= button_to 'Book', {:controller => "apartment_assignments", :action => "create", apartment_assignment: {:apartment_id => apartment, :user_id => current_user}}, :method=>:post, :class => "uk-button uk-button-success uk-button-medium" %>

@@ -28,8 +28,18 @@ class ApartmentAssignmentsController < ApplicationController
   def create
     #raise apartment_assignment_params.inspect
     @apartment_assignment = ApartmentAssignment.new(apartment_assignment_params)
-    #raise 'banana'
-    # TODO: assign bed?
+    @apartment_assignment[:assignment_date] = Time.new
+    @assigned_apartments = Apartment.joins(:apartment_assignments).merge(Apartment.where(id: @apartment_assignment.apartment)).all
+    @apartment = Apartment.find(@apartment_assignment.apartment_id)
+
+    if @assigned_apartments.count >= @apartment.max_people
+      format.html { render :new }
+      format.json { render json: @apartment_assignment.errors, status: :gone }
+    end
+
+    @apartment_assignment[:bedroom] = (@assigned_apartments.count+65).chr
+    #byebug
+    #raise @apartment_assignment.inspect
 
     #user = User.find(apartment_assignment_params[:user_id])
 
