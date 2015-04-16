@@ -20,9 +20,9 @@
         <td><%= apartment_assignment.user.firstname + ' ' + apartment_assignment.user.lastname %></td>
         <td><%= apartment_assignment.bedroom %></td>
         <td><%= apartment_assignment.assignment_date %></td>
-        <td><%= link_to 'Show', apartment_assignment %></td>
-        <td><%= link_to 'Edit', edit_apartment_assignment_path(apartment_assignment) %></td>
-        <td><%= link_to 'Destroy', apartment_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', apartment_assignment.apartment, :class => "uk-button uk-button-default uk-button-small" %></td>
+        <!--<td><%= link_to 'Edit', edit_apartment_assignment_path(apartment_assignment) %></td>-->
+        <td><%= link_to 'Unbook', apartment_assignment, method: :delete, data: { confirm: 'You are about to cancel your reservation of apartment ' + apartment_assignment.apartment.apartment_number + '. Are you sure you would like to continue? This action cannot be undone.' }, :class => "uk-button uk-button-danger uk-button-small" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,6 +30,6 @@
 
 <br>
 
-<%= link_to 'New Apartment assignment', new_apartment_assignment_path %>
+<!--<%= link_to 'New Apartment assignment', new_apartment_assignment_path %>-->
 
-<%= (current_user.firstname) %>
+<!--<%= (current_user.firstname) %>-->

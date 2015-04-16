@@ -5,7 +5,8 @@ class ApartmentAssignmentsController < ApplicationController
   # GET /apartment_assignments
   # GET /apartment_assignments.json
   def index
-    @apartment_assignments = ApartmentAssignment.all
+    #raise ApartmentAssignment.where( { user_id: current_user.id} ).inspect
+    @apartment_assignments = ApartmentAssignment.where( { user_id: current_user.id} ) #ApartmentAssignment.all
   end
 
   # GET /apartment_assignments/1
@@ -25,15 +26,20 @@ class ApartmentAssignmentsController < ApplicationController
   # POST /apartment_assignments
   # POST /apartment_assignments.json
   def create
+    #raise apartment_assignment_params.inspect
     @apartment_assignment = ApartmentAssignment.new(apartment_assignment_params)
+    #raise 'banana'
+    # TODO: assign bed?
 
-    user = User.find(apartment_assignment_params[:user_id])
+    #user = User.find(apartment_assignment_params[:user_id])
+
     #@apartment_assignment.build_user(:id => user.id)
 
-    apartment = Apartment.find(apartment_assignment_params[:apartment_id])
+    #apartment = Apartment.find(apartment_assignment_params[:apartment_id])
+
     #@apartment_assignment.build_apartment(:id => apartment.id)
 
-
+    #logger.warning('blubb')
     respond_to do |format|
       if @apartment_assignment.save
         format.html { redirect_to @apartment_assignment, notice: 'Apartment assignment was successfully created.' }
@@ -77,6 +83,12 @@ class ApartmentAssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_assignment_params
-      params.require(:apartment_assignment).permit(:bedroom, :assignment_date, :user_id, :apartment_id)
+      params.require(:apartment_assignment).permit(:user_id, :assignment_date, :apartment_id)
+
+      #params[:apartment_assignment][:assignment_date] = Time.new
+      #raise params.inspect
+
+      #params
+
     end
 end

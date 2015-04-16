@@ -36,16 +36,11 @@
     look at: button_to api.rubyonrails.org-->
 
     <!--<%= button_to "Create", new_apartment_assignment_path(apartment,current_user), form: { "data-type" => "json" } %>-->
-    <%= button_to 'Book', {:controller => "apartment_assignments", :action => "create", apartment_assignment: {:apartment => apartment, :current_user => current_user}}, :method=>:post %>
+    <div class="uk-button-group uk-push-4-5 uk-width-1-1">
+    <%= button_to 'Book', {:controller => "apartment_assignments", :action => "create", apartment_assignment: {:apartment_id => apartment, :user_id => current_user}}, :method=>:post, :class => "uk-button uk-button-success uk-button-small" %>
 
-
-    <button class="uk-button-success uk-button-large" type="button"><%= link_to 'Edit', edit_apartment_path(apartment) %></button>
-    <span>
-     <!-- <%= link_to new_apartment_path, class: 'uk-button-success uk-button-large' do %>
-        <i class="glyphicon glyphicon-plus"></i> New Post
-        <% end %> -->
-    </span>
-
+    <%= button_to 'Edit', edit_apartment_path(apartment), :class => "uk-button uk-button-default uk-button-small" %>
+  </div>
 </article>
 
 
