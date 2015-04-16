@@ -4,7 +4,11 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.all
+    #@apartments = Apartment.ApartmentAssignments.where({:users => current_user.id})  # Apartment.all
+    #@apartments = Apartment.Users.merge(ApartmentAssignments.users)
+    @assigned_apartments = Apartment.joins(:apartment_assignments).merge(ApartmentAssignment.where(user: current_user)).all
+    @full_apartments = []
+    @apartments = Apartment.all - @full_apartments
   end
 
   # GET /apartments/1
