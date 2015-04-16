@@ -10,13 +10,14 @@
     <% end %>
 
 
-    <p class="uk-article-lead"><%= 'Nr. ' + apartment.apartment_number + ' (' + apartment.number_of_rooms + '-room apartment)' %></p>
+    <p class="uk-article-lead"><%= apartment.apartment_number + ' Apartment' %></p>
+    <p class="uk-article-meta"><%= apartment.number_of_rooms + '-room apartment' %></p>
 
     <div class="">
       <%= image_tag(apartment.thumbnail, class: "uk-thumbnail uk-thumbnail-small") %>
 
       <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
-        <caption>Apartment Information</caption>
+        <!--<caption>Apartment Information</caption>-->
         <thead>
             <tr>
                 <th>Property</th>
