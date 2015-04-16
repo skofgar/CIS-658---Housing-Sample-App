@@ -21,15 +21,19 @@
   </div>
   <div class="field">
     <%= f.label :number_of_rooms %><br>
-    <%= f.text_field :number_of_rooms %>
+    <%= f.number_field :number_of_rooms %>
   </div>
   <div class="field">
     <%= f.label :max_people %><br>
-    <%= f.text_field :max_people %>
+    <%= f.number_field :max_people %>
   </div>
   <div class="field">
     <%= f.label :is_furnished %><br>
-    <%= f.text_field :is_furnished %>
+    <%= f.check_box :is_furnished %>
+  </div>
+   <div class="field">
+    <%= f.label :thumbnail %><br>
+    <%= f.url_field :thumbnail %>
   </div>
   <div class="actions">
     <%= f.submit %>

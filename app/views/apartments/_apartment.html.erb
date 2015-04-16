@@ -1,9 +1,13 @@
-<article class="uk-article">
+
+<li class="uk-width-1-3">
+  <div class="uk-panel uk-panel-box">
     <!--<hr class="uk-article-divider">-->
     <p class="uk-article-lead"><%= 'Nr. ' + apartment.apartment_number + ' (' + apartment.number_of_rooms + '-room apartment)' %></p>
 
+    <div class="">
+      <%= image_tag(apartment.thumbnail, class: "uk-thumbnail uk-thumbnail-small") %>
 
-    <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+      <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
         <caption>Apartment Information</caption>
         <thead>
             <tr>
@@ -29,50 +33,20 @@
                 <td><%= apartment.is_furnished %></td>
             </tr>
         </tbody>
-    </table>
+      </table>
 
-    <!--form_for [apartment, current_user]
 
-    look at: button_to api.rubyonrails.org-->
+      <!--form_for [apartment, current_user]
 
-    <!--<%= button_to "Create", new_apartment_assignment_path(apartment,current_user), form: { "data-type" => "json" } %>-->
-    <div class="uk-button-group uk-push-4-5 uk-width-1-1">
-    <%= button_to 'Book', {:controller => "apartment_assignments", :action => "create", apartment_assignment: {:apartment_id => apartment, :user_id => current_user}}, :method=>:post, :class => "uk-button uk-button-success uk-button-small" %>
+      look at: button_to api.rubyonrails.org-->
 
-    <%= button_to 'Edit', edit_apartment_path(apartment), :class => "uk-button uk-button-default uk-button-small" %>
+      <!--<%= button_to "Create", new_apartment_assignment_path(apartment,current_user), form: { "data-type" => "json" } %>-->
+      <div class="uk-button-group uk-push-1-6">
+      <%= button_to 'Book', {:controller => "apartment_assignments", :action => "create", apartment_assignment: {:apartment_id => apartment, :user_id => current_user}}, :method=>:post, :class => "uk-button uk-button-success uk-button-small" %>
+
+      <%= link_to 'Edit', edit_apartment_path(apartment), :class => "uk-button uk-button-default uk-button-small" %>
+      </div>
+
+    </div>
   </div>
-</article>
-
-
-
-
-<!--<table>
-  <thead>
-    <tr>
-      <th>Apartment number</th>
-      <th>Room number</th>
-      <th>Number of rooms</th>
-      <th>Max people</th>
-      <th>Is furnished</th>
-      <th>Thumbnail</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody class="uk-table">
-
-      <tr>
-        <td><%= apartment.apartment_number %></td>
-        <td><%= apartment.room_number %></td>
-        <td><%= apartment.number_of_rooms %></td>
-        <td><%= apartment.max_people %></td>
-        <td><%= apartment.is_furnished %></td>
-        <td><%= apartment.thumbnail %></td>
-        <td><%= link_to 'Show', apartment %></td>
-        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-
-  </tbody>
-</table>
--->
+</li>
