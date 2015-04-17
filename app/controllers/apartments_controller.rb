@@ -6,9 +6,9 @@ class ApartmentsController < ApplicationController
 
   resource_description do
     short 'This resource contains information about the current apartments registered.'
-    formats ['json']
-    error 404, "Missing"
-    error 500, "Server crashed for some <%= reason %>", :meta => {:anything => "you can think of"}
+    #formats ['json']
+    #error 404, "Missing"
+    #error 500, "Server crashed for some <%= reason %>", :meta => {:anything => "you can think of"}
     meta :author => {:name => 'Roland', :surname => 'H'}
   end
 

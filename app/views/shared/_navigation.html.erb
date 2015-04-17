@@ -1,51 +1,15 @@
-<!--<nav class="uk-navbar">
-    <a href="" class="">Housing</a>
-    <a class="uk-active" href="">Booking</a>
-    <a class="uk-navbar-content uk-navbar-center">Management</a>
-
-</nav>-->
-
-<!-- -->
 <nav data-uk-sticky class="uk-navbar uk-width-1-1">
 
     <ul class="uk-navbar-nav">
       <li class="uk-navbar-brand" href="">Housing</li>
         <li class="uk-small"><a href="/apartments">Apartments</a></li>
-        <!--<li class="uk-small"><a href="/users">Users</a></li>-->
         <li class="uk-small"><a href="/apartment_assignments">My assignments</a></li>
         <li class="uk-small"><a href="/apipie">Documentation</a></li>
-
-
-
-
-
-<!-- active -->
-
-        <!--
-        <li class="uk-hidden-small"><a href="">Item</a></li>
-        <li class="uk-parent" data-uk-dropdown="">
-            <a href="">Parent</a>
-
-            <div class="uk-dropdown uk-dropdown-navbar" style="">
-                <ul class="uk-nav uk-nav-navbar">
-                    <li><a href="#">Item</a></li>
-                    <li><a href="#">Another item</a></li>
-                    <li class="uk-nav-header">Header</li>
-                    <li><a href="#">Item</a></li>
-                    <li><a href="#">Another item</a></li>
-                    <li class="uk-nav-divider"></li>
-                    <li><a href="#">Separated item</a></li>
-                </ul>
-            </div>
-
-        </li>
-        -->
     </ul>
 
     <div class="uk-navbar-flip">
       <ul class="uk-navbar-nav">
         <% if user_signed_in? %>
-          <!--<strong><%= current_user.email %></strong>-->
           <li>
             <%= link_to edit_user_registration_path, :class => 'uk-navbar-nav-subtitle' do %>
                  <i class="uk-icon-user"></i> Edit profile
@@ -70,10 +34,6 @@
           </li>
         <% end %>
       </ul>
-
-
-
-
     </div>
 </nav>
-<!-- -->
+

@@ -43,33 +43,28 @@ class ApartmentAssignmentsController < ApplicationController
     @apartment_assignment[:assignment_date] = Time.new
     @assigned_apartments = Apartment.joins(:apartment_assignments).merge(Apartment.where(id: @apartment_assignment.apartment)).all
     @apartment = Apartment.find(@apartment_assignment.apartment_id)
-
-    if @assigned_apartments.count >= @apartment.max_people
-      format.html { render :new }
-      format.json { render json: @apartment_assignment.errors, status: :gone }
-    end
-
     @apartment_assignment[:bedroom] = (@assigned_apartments.count+65).chr
-    #byebug
-    #raise @apartment_assignment.inspect
 
     #user = User.find(apartment_assignment_params[:user_id])
-
     #@apartment_assignment.build_user(:id => user.id)
-
     #apartment = Apartment.find(apartment_assignment_params[:apartment_id])
-
     #@apartment_assignment.build_apartment(:id => apartment.id)
 
-    #logger.warning('blubb')
     respond_to do |format|
-      if @apartment_assignment.save
-        format.html { redirect_to @apartment_assignment, notice: 'Apartment assignment was successfully created.' }
-        format.json { render :show, status: :created, location: @apartment_assignment }
+      if @assigned_apartments.count < @apartment.max_people
+         if @apartment_assignment.save
+            format.html { redirect_to @apartment_assignment, notice: 'Apartment assignment was successfully created.' }
+            format.json { render :show, status: :created, location: @apartment_assignment }
+          else
+            format.html { render :new }
+            format.json { render json: @apartment_assignment.errors, status: :unprocessable_entity }
+          end
       else
-        format.html { render :new }
-        format.json { render json: @apartment_assignment.errors, status: :unprocessable_entity }
+        flash[:alert] = 'Sorry. The apartment is booked out.'
+        format.html { redirect_to(@apartment_assignment.apartment) }
+        format.json { render json: @apartment_assignment.errors, status: :gone, location: @apartment_assignment.apartment }
       end
+
     end
   end
 
@@ -108,11 +103,6 @@ class ApartmentAssignmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_assignment_params
       params.require(:apartment_assignment).permit(:id, :user_id, :assignment_date, :apartment_id)
-
-      #params[:apartment_assignment][:assignment_date] = Time.new
-      #raise params.inspect
-
-      #params
-
     end
 end
+
